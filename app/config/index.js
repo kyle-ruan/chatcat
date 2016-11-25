@@ -2,6 +2,7 @@
 
 if(process.env.NODE_ENV === 'production') {  // Offer production stage environment variables
   const redisURI = require('url').parse(process.env.REDIS_URL);
+  console.log('production');
   const redisPassword = redisURI.auth.split(':')[1];
   module.exports = {
     "host": process.env.host || "",
@@ -26,6 +27,7 @@ if(process.env.NODE_ENV === 'production') {  // Offer production stage environme
     }
   }
 } else {
+    console.log('development');
   // Offer dev stage settings and data
   module.exports = require('./development.json');
 }
